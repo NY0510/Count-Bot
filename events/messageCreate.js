@@ -28,7 +28,7 @@ module.exports = {
 					await message.reply(`🤔  ${message.author} 연속 카운트\n❌  카운트가 증가하지 않습니다\n⏭  다음에 입력할 숫자는 ${lastCount + 1} 입니다`).catch(console.error);
 				} else lastCount++;
 
-				mawaitessage.react("✅");
+				await messsage.react("✅");
 
 				// if (timeout) clearTimeout(timeout);
 				// timeout = setTimeout(() => message.channel.send(String(++lastCount)).catch(console.error), 30000);
