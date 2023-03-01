@@ -20,7 +20,7 @@ module.exports = {
 
 		if (guildConfig.channelid === channelId) {
 			let lastCount = guildConfig.count;
-			const evaledMessage = eval(message.content.replace(/[^-()\d/*+^.]/g, "").replace(/^/g, "**"));
+			const evaledMessage = eval(message.content.replace(/[^-()\d/*+^.]/g, "").replace("^", "**"));
 
 			if (Number(evaledMessage) === lastCount + 1) {
 				lastCount++;
