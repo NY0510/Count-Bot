@@ -8,7 +8,7 @@ const configPath = path.join(rootPath, "data", "channel.json");
 module.exports = {
 	name: "messageCreate",
 	async execute(message) {
-		if (message.author.bot) return;
+		if (message.member.user.bot) return;
 
 		const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 		const guildId = message.guild.id;
@@ -21,15 +21,11 @@ module.exports = {
 		if (guildConfig.channelid === channelId) {
 			let lastCount = guildConfig.count;
 			const evaledMessage = eval(message.content.replace(/[^-()\d/*+.]/g, ""));
-			const lastMessage = await message.channel.messages.fetch({ limit: 2 }).then(messages => messages.last());
 
 			if (Number(evaledMessage) === lastCount + 1) {
-				if (lastMessage.author.id === message.author.id) {
-					await message.reply(`🤔  ${message.author} 연속 카운트\n❌  카운트가 증가하지 않습니다\n⏭  다음에 입력할 숫자는 ${lastCount + 1} 입니다`).catch(console.error);
-				} else {
-					lastCount++;
-					await message.react("✅");
-				}
+				lastCount++;
+
+				await message.react("✅");
 
 				// if (timeout) clearTimeout(timeout);
 				// timeout = setTimeout(() => message.channel.send(String(++lastCount)).catch(console.error), 30000);
