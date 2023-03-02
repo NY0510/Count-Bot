@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const rootPath = path.join(__dirname, "..");
 const { EmbedBuilder } = require("discord.js");
-// const { extractNumber } = require("kor-to-number");
+const { extractNumber } = require("kor-to-number");
 
 const configPath = path.join(rootPath, "data", "channel.json");
 
@@ -38,7 +38,7 @@ module.exports = {
 				.replaceAll(/곱하기|times|掛け算|かける/gi, "*")
 				.replaceAll(/나누기|divide|割り算|わる/gi, "/")
 				.replaceAll(/제곱|pow|二乗|にじょう/gi, "**");
-			calculateMsg = calculateMsg.replace(/[^-()\d/*+^.]/g, "");
+			calculateMsg = extractNumber(calculateMsg).replace(/[^-()\d/*+^.]/g, "");
 			const evaledMessage = eval(calculateMsg);
 			const calculateNumber = Number(isRound ? Math.round(evaledMessage) : evaledMessage);
 
