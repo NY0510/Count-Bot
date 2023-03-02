@@ -38,7 +38,7 @@ module.exports = {
 				.replaceAll(/곱하기|times|掛け算|かける/gi, "*")
 				.replaceAll(/나누기|divide|割り算|わる/gi, "/")
 				.replaceAll(/제곱|pow|二乗|にじょう/gi, "**");
-			calculateMsg = extractNumber(calculateMsg).replace(/[^-()\d/*+^.]/g, "");
+			calculateMsg = extractNumber(calculateMsg)[0].replace(/[^-()\d/*+^.]/g, "");
 			const evaledMessage = eval(calculateMsg);
 			const calculateNumber = Number(isRound ? Math.round(evaledMessage) : evaledMessage);
 
