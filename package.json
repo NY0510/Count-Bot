@@ -13,7 +13,6 @@
 		"@discordjs/rest": "^1.1.0",
 		"chalk": "^4.1.2",
 		"discord.js": "^14.3.0",
-		"dotenv": "^16.0.1",
-		"kor-to-number": "^1.0.0"
+		"dotenv": "^16.0.1"
 	}
 }
