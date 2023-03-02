@@ -33,11 +33,11 @@ module.exports = {
 				.replaceAll(/eight|八|Ⅷ/gi, "8")
 				.replaceAll(/nine|九|Ⅸ/gi, "9")
 			
-				.replaceAll(/더하기|plus|たす/gi, "+")
-				.replaceAll(/빼기|마이너스|minus|ひく/gi, "-")
-				.replaceAll(/곱하기|times|かける/gi, "*")
-				.replaceAll(/나누기|divide|わる/gi, "/")
-				.replaceAll(/제곱|pow/gi, "**")
+				.replaceAll(/더하기|plus|足し算|たす/gi, "+")
+				.replaceAll(/빼기|마이너스|minus|引き算|ひく/gi, "-")
+				.replaceAll(/곱하기|times|掛け算|かける/gi, "*")
+				.replaceAll(/나누기|divide|割り算|わる/gi, "/")
+				.replaceAll(/제곱|pow|二乗|にじょう/gi, "**")
 			calculateMsg = extractNumber(calculateMsg).replace(/[^-()\d/*+^.]/g, "");
 			const evaledMessage = eval(calculateMsg);
 			const calculateNumber = Number(isRound ? Math.round(evaledMessage) : evaledMessage)
