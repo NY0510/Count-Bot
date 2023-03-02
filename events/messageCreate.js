@@ -51,7 +51,7 @@ module.exports = {
 				// timeout = setTimeout(() => message.channel.send(String(++lastCount)).catch(console.error), 30000);
 			} else {
 				await message
-					.reply(`💥  ${message.author} Messed up!\n**✏  ${lastCount + 1}을(를)** 입력했어야 합니다! (계산된 결과: ${evaledMessage})\n🔄  카운트는 1부터 다시 시작됩니다`)
+					.reply(`💥  ${message.author} Messed up!\n**✏  ${lastCount + 1}을(를)** 입력했어야 합니다! (계산된 결과: ${calculateNumber})\n🔄  카운트는 1부터 다시 시작됩니다`)
 					.catch(console.error);
 				lastCount = 0;
 
