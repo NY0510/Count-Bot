@@ -19,27 +19,10 @@ module.exports = {
 
 		if (guildConfig.channelid === channelId) {
 			let lastCount = guildConfig.count;
-			let isRound = message.content.startsWith("[ROUND]");
-			let calculateMsg = message.content
-				.replaceAll(/zero|ゼロ/gi, "0")
-				.replaceAll(/one|一|Ⅰ/gi, "1")
-				.replaceAll(/two|ニ|Ⅱ/gi, "2")
-				.replaceAll(/three|三|Ⅲ/gi, "3")
-				.replaceAll(/four|四|Ⅳ/gi, "4")
-				.replaceAll(/five|五|Ⅴ/gi, "5")
-				.replaceAll(/six|六|Ⅵ/gi, "6")
-				.replaceAll(/seven|七|Ⅶ/gi, "7")
-				.replaceAll(/eight|八|Ⅷ/gi, "8")
-				.replaceAll(/nine|九|Ⅸ/gi, "9")
-
-				.replaceAll(/더하기|plus|足し算|たす/gi, "+")
-				.replaceAll(/빼기|마이너스|minus|引き算|ひく/gi, "-")
-				.replaceAll(/곱하기|times|掛け算|かける/gi, "*")
-				.replaceAll(/나누기|divide|割り算|わる/gi, "/")
-				.replaceAll(/제곱|pow|二乗|にじょう/gi, "**");
-			calculateMsg = calculateMsg.replace(/[^-()\d/*+^.]/g, "");
+			let calculateMsg = message.content;
+			calculateMsg = calculateMsg.replace(/[^-()\d/*+^.]/g, "").replace("^", "**");
 			const evaledMessage = eval(calculateMsg);
-			const calculateNumber = Number(isRound ? Math.round(evaledMessage) : evaledMessage);
+			const calculateNumber = Number(evaledMessage);
 
 			if (calculateNumber === lastCount + 1) {
 				lastCount++;
